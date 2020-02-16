@@ -4,9 +4,46 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <!-- Project Object Model -->
+    <!-- All POMs extend the Super POM unless explicitly set -->
+    <!--parent>*</parent-->
+
     <groupId>dev.andrav</groupId>
     <artifactId>ExploreJava</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <description>Code examples</description>
+
+    <developers>
+        <developer>
+            <name>andrey antonov</name>
+        </developer>
+    </developers>
+
+    <modules>
+        <module>E01-classloader</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>13</maven.compiler.source>
+        <maven.compiler.target>13</maven.compiler.target>
+        <com.google.guava.version>27.1-jre</com.google.guava.version>
+        <my.variable>42</my.variable>
+    </properties>
+
+    <packaging>pom</packaging>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>3.1.1</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
 </project>
