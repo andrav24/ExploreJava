@@ -13,6 +13,10 @@ public abstract class MyCurrency {
         this.currencyType = currencyType;
     }
 
+    public Nominalable getNominalType() {
+        return this.nominal;
+    }
+
     public int getValue() {
         return nominal.getNominal();
     }

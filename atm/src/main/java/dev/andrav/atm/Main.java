@@ -12,10 +12,15 @@ public class Main {
         List<Banknote<?>> cash = atm.getDemoData();
         atm.deposit(cash);
 
-        analyzer.getAnalyze(cash);
+        CellBox cellBox = CellBox.getInstance(4,
+                BanknoteNominal.NOMINAL_100, BanknoteNominal.NOMINAL_500,
+                BanknoteNominal.NOMINAL_1000, BanknoteNominal.NOMINAL_5000);
 
-        System.out.println(new Banknote<RUB>(RUB.getInstance(100)).equals(new Banknote<RUB>(RUB.getInstance(100))));
-        System.out.println(RUB.getInstance(100).equals(RUB.getInstance(100)));
+        cellBox.print();
+        //analyzer.getAnalyze(cash);
+
+        /*System.out.println(new Banknote<RUB>(RUB.getInstance(100)).equals(new Banknote<RUB>(RUB.getInstance(100))));    // false
+        System.out.println(RUB.getInstance(100).equals(RUB.getInstance(100)));               */                           // true
 
         //List<Banknote> unacceptedCash = atm.deposit(cash);
         //atm.getBalanceATM();

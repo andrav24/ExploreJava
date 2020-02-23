@@ -36,7 +36,7 @@ public class ATMImpl<T extends Banknote<? extends MyCurrency>> extends ATM<T> {
             listBanknotes.add((T) new Banknote<MyCurrency>(RUB.getInstance(100)));
             listBanknotes.add((T) new Banknote<MyCurrency>(RUB.getInstance(500)));
             listBanknotes.add((T) new Banknote<MyCurrency>(USD.getInstance(50)));
-            listBanknotes.add((T) new Banknote<MyCurrency>(RUB.getInstance(1000)));
+            listBanknotes.add((T) new Banknote<MyCurrency>(RUB.getInstance(100)));
         }
         return listBanknotes;
     }

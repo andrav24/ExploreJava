@@ -24,8 +24,7 @@ public class BanknoteAnalyzer<T extends Banknote<? extends MyCurrency>> {
                 System.out.println("Отбрасываем: " + banknote.getBanknoteValue() + " " + banknote.getBanknoteCurrencySymbol());
             }
         }
-        TreeSet<T> treeSet = new TreeSet<>();
-
-
+        TreeSet<T> treeSet = new TreeSet<>(accepted);
+        treeSet.forEach(e -> System.out.println(e.getBanknoteValue()));
     }
 }
