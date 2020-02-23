@@ -22,6 +22,7 @@
 
     <modules>
         <module>E01-classloader</module>
+        <module>atm</module>
     </modules>
 
     <properties>
