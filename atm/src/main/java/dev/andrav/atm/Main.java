@@ -1,20 +1,39 @@
 package dev.andrav.atm;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
 
-        List<Banknote> listBanknote = new ArrayList<>();
-        int i;
-        for (i = 0; i < 100; i++) {
-            listBanknote.add(new Banknote(RUB.getInstance(100)));
-            listBanknote.add(new Banknote(RUB.getInstance(500)));
-        }
+        ATMImpl atm = new ATMImpl(RUB.class);
+        BanknoteAnalyzer<Banknote<?>> analyzer = new BanknoteAnalyzer(RUB.class);
 
-        for (Banknote banknote : listBanknote) {
+
+        List<Banknote<?>> cash = atm.getDemoData();
+        atm.deposit(cash);
+
+        analyzer.getAnalyze(cash);
+
+        System.out.println(new Banknote<RUB>(RUB.getInstance(100)).equals(new Banknote<RUB>(RUB.getInstance(100))));
+        System.out.println(RUB.getInstance(100).equals(RUB.getInstance(100)));
+
+        //List<Banknote> unacceptedCash = atm.deposit(cash);
+        //atm.getBalanceATM();
+        //List receivedCash = atm.withdraw(3400);
+
+        /*System.out.println("MyCurrency for deposit:");
+        for (Banknote banknote : cash) {
             System.out.println(banknote.getBanknoteValue() + " " + banknote.getBanknoteCurrencySymbol());
-        }
+        }*/
+
+        /*System.out.println("Unaccepted cash:");
+        if (unacceptedCash.size() > 0) {
+            for (Banknote banknote : unacceptedCash) {
+                System.out.println(banknote.getBanknoteValue() + " " + banknote.getBanknoteCurrencySymbol());
+            }
+        } else {
+            System.out.println("None");
+        }*/
+
     }
 }

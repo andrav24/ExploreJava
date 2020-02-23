@@ -1,5 +1,7 @@
 package dev.andrav.atm;
 
+import java.util.Objects;
+
 public class Banknote<T extends MyCurrency> {
     private T currencyUnit;
 
