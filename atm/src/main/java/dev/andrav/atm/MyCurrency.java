@@ -4,24 +4,24 @@ import java.util.Currency;
 
 public abstract class MyCurrency {
 
-    Nominalable nominal;
-    CurrencyType currency;
+    protected Nominalable nominal;
+    protected CurrencyType currencyType;
 
-    public MyCurrency(Nominalable nominal, CurrencyType currency) {
+    public MyCurrency(Nominalable nominal, CurrencyType currencyType) {
         this.nominal = nominal;
-        this.currency = currency;
+        this.currencyType = currencyType;
     }
 
-    public int getNominal() {
+    public int getValue() {
         return nominal.getNominal();
     }
 
     public Currency getCurrency() {
-        return currency.getCurrency();
+        return currencyType.getCurrency();
     }
 
     public String getCurrencySymbol() {
-        return currency.getCurrency().getSymbol();
+        return getCurrency().getSymbol();
     }
 
 }

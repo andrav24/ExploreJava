@@ -1,17 +1,21 @@
 package dev.andrav.atm;
 
 public class Banknote<T extends MyCurrency> {
-    private T currency;
+    private T currencyUnit;
 
-    public Banknote(T currency) {
-        this.currency = currency;
+    public Banknote(T currencyUnit) {
+        this.currencyUnit = currencyUnit;
     }
 
-    public T getCurrency() {
-        return currency;
+    public T getBanknoteCurrencyUnit() {
+        return currencyUnit;
     }
 
-    public int getNominal() {
-        return currency.getNominal();
+    public int getBanknoteValue() {
+        return currencyUnit.getValue();
+    }
+
+    public String getBanknoteCurrencySymbol() {
+        return currencyUnit.getCurrencySymbol();
     }
 }
