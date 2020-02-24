@@ -4,14 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cell<Banknote> {
+
+    int cellCapacity = 2500;
     int cellNominal;
-    int cellCapacity;
+    int currentSize;
     List<Banknote> cell;
+
+    public Cell() {
+        this.cell = new ArrayList<>();
+    }
 
     public Cell(int cellNominal, int cellCapacity) {
         this.cellNominal = cellNominal;
         this.cellCapacity = cellCapacity;
         this.cell = new ArrayList<>();
+    }
+
+    public int getCurrentSize() {
+        return cell.size();
     }
 
     public int getCellNominal() {
@@ -23,6 +33,7 @@ public class Cell<Banknote> {
     }
 
     public boolean add(Banknote banknote) {
+        cell.add(banknote);
         return true;
     }
 

@@ -12,11 +12,17 @@ public class Main {
         List<Banknote<?>> cash = atm.getDemoData();
         atm.deposit(cash);
 
-        CellBox cellBox = CellBox.getInstance(4,
-                BanknoteNominal.NOMINAL_100, BanknoteNominal.NOMINAL_500,
-                BanknoteNominal.NOMINAL_1000, BanknoteNominal.NOMINAL_5000);
+        CellBox<?> cellBox = CellBox.getInstance(
+                BanknoteNominal.NOMINAL_100,
+                BanknoteNominal.NOMINAL_500,
+                BanknoteNominal.NOMINAL_1000,
+                BanknoteNominal.NOMINAL_5000
+        );
 
+        Banknote<?> banknote = new Banknote<>(RUB.getInstance(500));
+        cellBox.addBanknote(banknote);
         cellBox.print();
+
         //analyzer.getAnalyze(cash);
 
         /*System.out.println(new Banknote<RUB>(RUB.getInstance(100)).equals(new Banknote<RUB>(RUB.getInstance(100))));    // false

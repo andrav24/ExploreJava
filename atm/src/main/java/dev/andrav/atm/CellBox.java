@@ -1,68 +1,37 @@
 package dev.andrav.atm;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class CellBox<T extends Cell> {
 
-    private final int maxCellQuantity = 4;
-    private int cellQuantity;
-    private List<Nominalable> cellNominals;
-    private List<Cell> storages;
+    //private TreeSet<Integer> setNominalsInt = new TreeSet<>();
+    private Map<Integer, Cell<Banknote<?>>> storage = new TreeMap<>();
 
-    private CellBox(int cellQuantity, BanknoteNominal ... cellNominals) {
-        this.cellQuantity = cellQuantity;
-        this.cellNominals = List.of(cellNominals);
-        this.storages = new ArrayList<>();
-        for (int i = 0; i < cellQuantity; i++) {
-            storages.add(new Cell(this.cellNominals.get(i), 100));
+    private CellBox(BanknoteNominal ... cellNominals) {
+        for (int i = 0; i < cellNominals.length; i++) {
+            //setNominalsInt.add(cellNominals[i].getNominal());
+            storage.put(cellNominals[i].getNominal(), new Cell<>());
         }
     }
 
-    public static CellBox getInstance(int cellQuantity, BanknoteNominal ... cellNominals) {
-        return new CellBox(cellQuantity, cellNominals);
+    public static CellBox getInstance(BanknoteNominal ... cellNominals) {
+        return new CellBox(cellNominals);
+    }
+
+    public void addBanknote(Banknote<?> banknote) {
+        storage.get(banknote.getBanknoteValue()).add(banknote);
     }
 
     public void print() {
-        for (Cell storage : storages) {
-            System.out.println(storage.cellCapacity);
-        }
-    }
-
-    /*private void addCellNominals(Nominalable[] arr) {
-        this.setCellNominals = Set.of(arr);
-    }*/
-
-    /*private void addCell(Nominalable cellNominal, int cellCapacity) {
-        cellBox.add(new Cell(cellNominal, cellCapacity));
-    }*/
-
-    static class Cell {
-        static int maxCellCapacity = 250;
-        Nominalable cellNominal;
-        int cellCapacity;
-        List<Banknote<?>> cell;
-
-        public Cell(Nominalable cellNominal, int cellCapacity) {
-            this.cellNominal = cellNominal;
-            this.cellCapacity = cellCapacity;
-            this.cell = new ArrayList<>();
-        }
-
-        public int getCellNominal() {
-            return cellNominal.getNominal();
-        }
-
-        public int getCellCapacity() {
-            return cellCapacity;
-        }
-
-        public boolean add(Banknote<?> banknote) {
-            return true;
-        }
-
-        public Banknote<?> get() {
-            return cell.get(cell.size()-1);
-        }
+        System.out.println(storage.size());
+        storage.forEach((x,y) ->
+                System.out.println(
+                        "Cell " + x +
+                                ":\tCapacity: " + storage.get(x).getCellCapacity() +
+                                        "\tCurrent size: " + storage.get(x).getCurrentSize()));
+        System.out.println("Cell nominals: ");
+        storage.keySet().forEach(System.out::println);
     }
 }
